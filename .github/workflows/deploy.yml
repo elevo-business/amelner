@@ -2,7 +2,12 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: ["main"]
+    # main ist der massgebliche Branch. Die github-pages-Environment laesst
+    # Deploys derzeit nur vom alten Default-Branch zu, deshalb laeuft die
+    # Auslieferung uebergangsweise ueber claude/bold-cannon-i0b3wn.
+    # Sobald main in Settings -> Environments -> github-pages freigegeben
+    # (oder Default-Branch) ist, kann der zweite Eintrag entfallen.
+    branches: ["main", "claude/bold-cannon-i0b3wn"]
   workflow_dispatch:
 
 permissions:
