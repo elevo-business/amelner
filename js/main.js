@@ -23,9 +23,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  /* Header-Zustand beim Scrollen */
+  /* Header-Zustand beim Scrollen.
+     Seiten ohne dunklen Hero (Impressum, Datenschutz) tragen header--solid und
+     behalten den deckenden Kopf dauerhaft — sonst stuende helle Schrift auf
+     hellem Papier. */
   const header = document.getElementById('header');
-  if (header) {
+  if (header && !header.classList.contains('header--solid')) {
     const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 40);
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
