@@ -35,7 +35,22 @@ datenschutz.html   Datenschutzerklärung
 css/style.css      Design-System & Layout (responsiv)
 js/main.js         Altersabfrage, Header, Mobil-Menü, Reveal, Parallaxe
 assets/img/        Bildmaterial
+robots.txt         Rechtstexte aus dem Index genommen
+sitemap.xml        Acht Inhaltsseiten
 ```
+
+### Beim Umzug auf die eigene Domain
+
+Die `canonical`-Angaben sind bewusst **relativ**, damit sie unter jeder
+Adresse stimmen. Absolut sind nur die URLs in `sitemap.xml` und die
+`Sitemap:`-Zeile in `robots.txt` — dort die Basis-Adresse austauschen,
+sobald die Seite unter amelner.de läuft.
+
+### Strukturierte Daten
+
+Jede Seite trägt `LocalBusiness` (Anschrift, Telefon, Gründungsjahr,
+Inhaber). Auf `likoere.html` kommt eine `ItemList` mit beiden Produkten
+samt Preis hinzu.
 
 Jede Kapitelseite endet mit einer Blätterleiste (zurück / weiter), sodass
 man das Brennbuch auch der Reihe nach durchlesen kann.
