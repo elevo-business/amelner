@@ -48,10 +48,26 @@ Absolute Adressen stehen in `canonical`, `og:url`, `og:image`,
 `sitemap.xml` und `robots.txt`. Bei einem Domainwechsel genügt es,
 `SITE` im Seitengenerator zu ändern und neu zu erzeugen.
 
-`.htaccess` vereinheitlicht auf `https://amelner.de`: `www` wird
-entfernt, HTTP auf HTTPS geleitet. **Erst hochladen, wenn das
-SSL-Zertifikat aktiv ist** — sonst zeigt die Weiterleitung ins Leere.
-Alte Adressen der Vorgängerseite werden auf die passenden Kapitel geführt.
+### Auslieferung
+
+Deployt wird über **Coolify** auf einem eigenen Server. Grundlage sind
+`Dockerfile` und `deploy/nginx.conf`; Coolify baut daraus ein Abbild und
+Traefik stellt das Zertifikat.
+
+Zwei Eigenheiten dieser Umgebung sind in der Konfiguration berücksichtigt:
+
+- **TLS endet vor dem Container.** Innen kommt nur HTTP an. Eine
+  Weiterleitung auf `$scheme` ergäbe eine Endlosschleife — maßgeblich ist
+  allein `X-Forwarded-Proto`.
+- **`absolute_redirect off`**, sonst baut nginx interne Weiterleitungen aus
+  Schema und Port des Containers zusammen und schickt Besucher auf `http://`.
+- In den `location`-Blöcken steht bewusst **kein `add_header`**: nginx
+  vererbt Kopfzeilen nicht mehr, sobald ein Block eigene setzt — die
+  Sicherheitskopfzeilen wären sonst für genau diese Antworten weg. Die
+  Haltbarkeit steuert daher ausschließlich `expires`.
+
+`.htaccess` liegt weiterhin bei, falls die Seite je auf klassisches
+Apache-Webhosting umzieht. Ins Container-Abbild wird sie nicht kopiert.
 
 ### Strukturierte Daten
 
