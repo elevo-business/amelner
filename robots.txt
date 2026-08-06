@@ -5,4 +5,4 @@ Allow: /
 Disallow: /impressum.html
 Disallow: /datenschutz.html
 
-Sitemap: https://elevo-business.github.io/amelner/sitemap.xml
+Sitemap: https://amelner.de/sitemap.xml

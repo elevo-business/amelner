@@ -35,16 +35,23 @@ datenschutz.html   Datenschutzerklärung
 css/style.css      Design-System & Layout (responsiv)
 js/main.js         Altersabfrage, Header, Mobil-Menü, Reveal, Parallaxe
 assets/img/        Bildmaterial
+404.html           Fehlerseite (wurzelrelative Pfade)
+.htaccess          Weiterleitungen, Komprimierung, Zwischenspeicher
 robots.txt         Rechtstexte aus dem Index genommen
 sitemap.xml        Acht Inhaltsseiten
 ```
 
-### Beim Umzug auf die eigene Domain
+### Produktivadresse
 
-Die `canonical`-Angaben sind bewusst **relativ**, damit sie unter jeder
-Adresse stimmen. Absolut sind nur die URLs in `sitemap.xml` und die
-`Sitemap:`-Zeile in `robots.txt` — dort die Basis-Adresse austauschen,
-sobald die Seite unter amelner.de läuft.
+Die Seite ist auf **https://amelner.de/** ausgerichtet (ohne `www`).
+Absolute Adressen stehen in `canonical`, `og:url`, `og:image`,
+`sitemap.xml` und `robots.txt`. Bei einem Domainwechsel genügt es,
+`SITE` im Seitengenerator zu ändern und neu zu erzeugen.
+
+`.htaccess` vereinheitlicht auf `https://amelner.de`: `www` wird
+entfernt, HTTP auf HTTPS geleitet. **Erst hochladen, wenn das
+SSL-Zertifikat aktiv ist** — sonst zeigt die Weiterleitung ins Leere.
+Alte Adressen der Vorgängerseite werden auf die passenden Kapitel geführt.
 
 ### Strukturierte Daten
 
